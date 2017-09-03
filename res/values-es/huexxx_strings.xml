@@ -4,4 +4,8 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="three_finger_gesture">Desliza para capturar pantalla</string>
     <string name="three_finger_gesture_summary">Desliza hacia abajo con tres dedos para capturar la pantalla</string>
+    <string name="torch_power_button_gesture_title">Activar linterna con pantalla apagada</string>
+    <string name="torch_power_button_gesture_none">Desactivado</string>
+    <string name="torch_power_button_gesture_dt">Pulsar dos veces el botón de encendido (Desactiva la característica Abrir la cámara rápidamente y añade un retardo al encendido de 170ms)</string>
+    <string name="torch_power_button_gesture_lp">Mantener pulsado el botón de encendido</string>
 </resources>
