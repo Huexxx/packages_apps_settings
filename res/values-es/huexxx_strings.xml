@@ -8,4 +8,6 @@
     <string name="torch_power_button_gesture_none">Desactivado</string>
     <string name="torch_power_button_gesture_dt">Pulsar dos veces el botón de encendido (Desactiva la característica Abrir la cámara rápidamente y añade un retardo al encendido de 170ms)</string>
     <string name="torch_power_button_gesture_lp">Mantener pulsado el botón de encendido</string>
+    <string name="proximity_wake_title">Prevenir encendido accidental</string>
+    <string name="proximity_wake_summary">Comprobar el sensor de proximidad antes de encender la pantalla con el gesto Tocar para activar</string>
 </resources>
