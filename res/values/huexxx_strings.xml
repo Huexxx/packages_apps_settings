@@ -22,4 +22,8 @@
     <string name="lowbattery_light_intensity">Light intensity</string>
     <string name="lowbattery_light_on_time">Light ON time during led pulse (ms)</string>
     <string name="lowbattery_light_off_time">Light OFF time during led pulse (ms)</string>
+
+    <!-- Volume rocker music control -->
+    <string name="volume_button_music_control_title">Playback control</string>
+    <string name="volume_button_music_control_summary">When the screen is off, long-pressing the volume keys will skip music tracks</string>
 </resources>

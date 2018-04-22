@@ -16,4 +16,6 @@
     <string name="lowbattery_light_intensity">Intensidad de la luz</string>
     <string name="lowbattery_light_on_time">Tiempo ENCENDIDO del pulso led (ms)</string>
     <string name="lowbattery_light_off_time">Tiempo APAGADO del pulso led (ms)</string>
+    <string name="volume_button_music_control_title">Control de reproducción</string>
+    <string name="volume_button_music_control_summary">Con la pantalla apagada, saltar pistas de música manteniendo pulsadas las teclas de volumen</string>
 </resources>
