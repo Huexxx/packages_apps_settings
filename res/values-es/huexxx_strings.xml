@@ -12,4 +12,7 @@
     <string name="proximity_wake_summary">Comprobar el sensor de proximidad antes de encender la pantalla con el gesto Tocar para activar</string>
     <string name="battery_light_title">Notificación luminosa con el cargador conectado</string>
     <string name="lowbattery_light_title">Notificación luminosa con batería baja</string>
+    <string name="custom_light_title">Color de la luz</string>
+    <string name="custom_light_on_time_title">Tiempo ENCENDIDO durante el pulso led (ms)</string>
+    <string name="custom_light_off_time_title">Tiempo APAGADO durante el pulso led (ms)</string>
 </resources>

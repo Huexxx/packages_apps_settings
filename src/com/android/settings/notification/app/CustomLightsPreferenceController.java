@@ -20,31 +20,36 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.provider.Settings;
-
 import androidx.preference.Preference;
 
 import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settings.notification.NotificationBackend;
 import com.android.settingslib.RestrictedSwitchPreference;
+import com.android.settingslib.core.lifecycle.Lifecycle;
+import com.android.settingslib.core.lifecycle.LifecycleObserver;
+import com.android.settingslib.core.lifecycle.events.OnResume;
 
-public class LightsPreferenceController extends NotificationPreferenceController
+import com.huexxx.support.colorpicker.ColorPickerPreference;
+
+public class CustomLightsPreferenceController extends NotificationPreferenceController
         implements PreferenceControllerMixin, Preference.OnPreferenceChangeListener {
 
-    boolean blink_light = false;
+    private static final String KEY_CUSTOM_LIGHT = "custom_light";
 
-    private int mLedColorTemp = 0;
-    private int mLightOnTimeTemp = 0;
-    private int mLightOffTimeTemp = 0;
+    private int mLedColor = 0;
+    public static int mLedColorTemp = 0;
 
-    private static final String KEY_LIGHTS = "lights";
-
-    public LightsPreferenceController(Context context, NotificationBackend backend) {
+    public CustomLightsPreferenceController(Context context, NotificationBackend backend) {
         super(context, backend);
     }
 
     @Override
     public String getPreferenceKey() {
-        return KEY_LIGHTS;
+        return KEY_CUSTOM_LIGHT;
+    }
+
+    public static int getLedColorTemp() {
+        return mLedColorTemp;
     }
 
     @Override
@@ -59,28 +64,26 @@ public class LightsPreferenceController extends NotificationPreferenceController
                 && canPulseLight();
     }
 
-    @Override
-    boolean isIncludedInFilter() {
-        return mPreferenceFilter.contains(NotificationChannel.EDIT_LOCKED_DEVICE);
-    }
-
     public void updateState(Preference preference) {
         if (mChannel != null) {
-            RestrictedSwitchPreference pref = (RestrictedSwitchPreference) preference;
-            pref.setDisabledByAdmin(mAdmin);
-            pref.setEnabled(!pref.isDisabledByAdmin());
-            pref.setChecked(mChannel.shouldShowLights());
+             //light color pref
+            ColorPickerPreference mCustomLight = (ColorPickerPreference) preference;
+            int defaultLightColor = mContext.getResources().getColor(com.android.internal.R.color.config_defaultNotificationColor);
+            mCustomLight.setDefaultValue(defaultLightColor);
+            mLedColor = (mChannel.getLightColor() != 0 ? mChannel.getLightColor() : defaultLightColor);
+            mCustomLight.setAlphaSliderEnabled(false);
+            mCustomLight.setNewPreviewColor(mLedColor);
         }
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         if (mChannel != null) {
-            final boolean lights = (Boolean) newValue;
-	    blink_light = lights;
-            showLedPreview();
-            mChannel.enableLights(lights);
+            mLedColor = ((Integer) newValue).intValue();
+            mChannel.setLightColor(mLedColor);
             saveChannel();
+            showLedPreview();
+            mLedColorTemp = mLedColor;
         }
         return true;
     }
@@ -91,19 +94,18 @@ public class LightsPreferenceController extends NotificationPreferenceController
             return false;
         }
         return Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.NOTIFICATION_LIGHT_PULSE, 0) == 1;
+                Settings.System.NOTIFICATION_LIGHT_PULSE, 1) == 1;
     }
 
     private void showLedPreview() {
-        if (blink_light == true) {
-            mLedColorTemp = CustomLightsPreferenceController.getLedColorTemp();
-            mLightOnTimeTemp = CustomLightOnTimePreferenceController.getLightOnTimeTemp();
-            mLightOffTimeTemp = CustomLightOffTimePreferenceController.getLightOffTimeTemp();
-            mNm.forcePulseLedLight(mLedColorTemp, mLightOnTimeTemp, mLightOffTimeTemp);
-        } else {
+        if (mChannel.shouldShowLights()) {
             mNm.forcePulseLedLight(
-                    0, 0, 0);
+                    mLedColor, mChannel.getLightOnTime(), mChannel.getLightOffTime());
         }
     }
 
+    @Override
+    boolean isIncludedInFilter() {
+        return false;
+    }
 }
