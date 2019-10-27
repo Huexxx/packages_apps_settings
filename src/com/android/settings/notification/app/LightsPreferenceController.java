@@ -99,7 +99,13 @@ public class LightsPreferenceController extends NotificationPreferenceController
             mLedColorTemp = CustomLightsPreferenceController.getLedColorTemp();
             mLightOnTimeTemp = CustomLightOnTimePreferenceController.getLightOnTimeTemp();
             mLightOffTimeTemp = CustomLightOffTimePreferenceController.getLightOffTimeTemp();
-            mNm.forcePulseLedLight(mLedColorTemp, mLightOnTimeTemp, mLightOffTimeTemp);
+            if (mContext.getResources()
+                    .getBoolean(com.android.internal.R.bool.config_multicolorled)) {
+                mNm.forcePulseLedLight(
+                        mLedColorTemp, mLightOnTimeTemp, mLightOffTimeTemp);
+	    } else {
+                mNm.forcePulseLedLight(
+                        0xFFFFFFFF, mLightOnTimeTemp, mLightOffTimeTemp);
         } else {
             mNm.forcePulseLedLight(
                     0, 0, 0);
