@@ -87,4 +87,9 @@
     <string name="device_header_info_category_title">Build type</string>
     <string name="device_info_hw_sw_more">More</string>
     <string name="device_info_security_patch">Security update</string>
+
+    <!-- Navigation bar hint -->
+    <string name="navbar_category">Navigation bar</string>
+    <string name="hide_navbar_gesture_bar_title">Hide gesture bar</string>
+    <string name="hide_navbar_gesture_bar_summary">Hide the gesture bar at the bottom of the screen</string>
 </resources>
