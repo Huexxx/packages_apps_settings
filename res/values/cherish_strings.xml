@@ -411,4 +411,9 @@
     <!-- Ringer mode mute speaker media -->
     <string name="ringer_mute_speaker_media_title">Mute media volume on silent or vibrate</string>
     <string name="ringer_mute_speaker_media_summary">Mute media volume when ringer mode is set to silent or vibrate. This affect speaker only</string>  
+
+    <!-- Doze on double tap -->
+    <string name="double_tap_title">Double tap</string>
+    <string name="doze_double_tap_title">Double tap to check phone</string>
+    <string name="doze_double_tap_summary">Pulse notifications by a double tap</string>
 </resources>
