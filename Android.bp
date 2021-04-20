@@ -118,6 +118,7 @@ android_library {
         "keyboard_flags_lib",
         "glide",
 	"VendorSupport-preference",
+        "androidx.dynamicanimation_dynamicanimation",
     ],
 
     plugins: [
