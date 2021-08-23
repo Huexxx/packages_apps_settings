@@ -1,3 +1,4 @@
+
 /*
  * Copyright (C) 2020 The Android Open Source Project
  *
@@ -42,10 +43,12 @@ import android.util.EventLog;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -92,6 +95,9 @@ import com.android.settingslib.wifi.WifiSavedConfigUtils;
 import com.android.wifitrackerlib.WifiEntry;
 import com.android.wifitrackerlib.WifiEntry.ConnectCallback;
 import com.android.wifitrackerlib.WifiPickerTracker;
+
+import com.google.android.setupcompat.util.WizardManagerHelper;
+import com.google.android.setupdesign.GlifPreferenceLayout;
 
 import java.util.List;
 import java.util.Optional;
@@ -167,6 +173,8 @@ public class NetworkProviderSettings extends RestrictedSettingsFragment
 
     // Enable the Next button when a Wi-Fi network is connected.
     private boolean mEnableNextOnConnection;
+
+    private boolean mIsInSetupWizard;
 
     // This string extra specifies a network to open the connect dialog on, so the user can enter
     // network credentials.  This is used by quick settings for secured networks, among other
@@ -271,6 +279,17 @@ public class NetworkProviderSettings extends RestrictedSettingsFragment
         if (activity == null) {
             return;
         }
+        mWifiManager = activity.getSystemService(WifiManager.class);
+
+        if (mIsInSetupWizard) {
+            GlifPreferenceLayout layout = (GlifPreferenceLayout) view;
+            layout.setDividerInsets(Integer.MAX_VALUE, 0);
+
+            layout.setIcon(getContext().getDrawable(R.drawable.ic_network_setup));
+            layout.setHeaderText(R.string.provider_internet_settings);
+
+            return;
+        }
 
         setPinnedHeaderView(com.android.settingslib.widget.progressbar.R.layout.progress_header);
         setProgressBarVisible(false);
@@ -304,6 +323,9 @@ public class NetworkProviderSettings extends RestrictedSettingsFragment
 
         mIsRestricted = isUiRestricted();
         updateUserType();
+
+        final Intent intent = this.getIntent();
+        mIsInSetupWizard = WizardManagerHelper.isAnySetupWizard(intent);
 
         mMenuProvider = new MenuProvider() {
             @Override
@@ -349,6 +371,17 @@ public class NetworkProviderSettings extends RestrictedSettingsFragment
         if (userManager == null) return;
         mIsAdmin = userManager.isAdminUser();
         mIsGuest = userManager.isGuestUser();
+    }
+
+    @Override
+    public RecyclerView onCreateRecyclerView(LayoutInflater inflater, ViewGroup parent,
+            Bundle savedInstanceState) {
+        if (mIsInSetupWizard) {
+            GlifPreferenceLayout layout = (GlifPreferenceLayout) parent;
+            return layout.onCreateRecyclerView(inflater, parent, savedInstanceState);
+        } else {
+            return super.onCreateRecyclerView(inflater, parent, savedInstanceState);
+        }
     }
 
     private void addPreferences() {
@@ -991,7 +1024,9 @@ public class NetworkProviderSettings extends RestrictedSettingsFragment
 
                 if (mClickedConnect) {
                     mClickedConnect = false;
-                    scrollToPreference(connectedWifiPreferenceCategory);
+                    if (!mIsInSetupWizard) {
+                        scrollToPreference(connectedWifiPreferenceCategory);
+                    }
                 }
             }
         } else {
@@ -1112,10 +1147,12 @@ public class NetworkProviderSettings extends RestrictedSettingsFragment
 
     @VisibleForTesting
     void setAdditionalSettingsSummaries() {
-        mConfigureWifiSettingsPreference.setSummary(getString(
-                isWifiWakeupEnabled()
-                        ? R.string.wifi_configure_settings_preference_summary_wakeup_on
-                        : R.string.wifi_configure_settings_preference_summary_wakeup_off));
+        if (!mIsInSetupWizard) {
+            mConfigureWifiSettingsPreference.setSummary(getString(
+                    isWifiWakeupEnabled()
+                            ? R.string.wifi_configure_settings_preference_summary_wakeup_on
+                            : R.string.wifi_configure_settings_preference_summary_wakeup_off));
+        }
 
         final int numSavedNetworks = mWifiPickerTracker == null ? 0 :
                 mWifiPickerTracker.getNumSavedNetworks();
@@ -1163,7 +1200,9 @@ public class NetworkProviderSettings extends RestrictedSettingsFragment
     }
 
     protected void setProgressBarVisible(boolean visible) {
-        showPinnedHeader(visible);
+        if (!mIsInSetupWizard) {
+            showPinnedHeader(visible);
+        }
     }
 
     @VisibleForTesting
