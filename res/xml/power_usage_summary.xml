@@ -59,6 +59,16 @@
         settings:keywords="@string/keywords_battery_adaptive_preferences" />
 
     <SwitchPreference
+        android:key="battery_light_enabled"
+        android:title="@string/battery_light_title"
+        settings:controller="com.android.settings.notification.BatteryLightPreferenceController"/>
+
+    <SwitchPreference
+        android:key="lowbattery_light_enabled"
+        android:title="@string/lowbattery_light_title"
+        settings:controller="com.android.settings.notification.LowBatteryLightPreferenceController"/>
+
+    <SwitchPreference
         android:key="battery_percentage"
         android:title="@string/battery_percentage"
         android:summary="@string/battery_percentage_description"
