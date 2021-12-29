@@ -33,14 +33,14 @@ import com.android.settingslib.core.lifecycle.LifecycleObserver;
 import com.android.settingslib.core.lifecycle.events.OnPause;
 import com.android.settingslib.core.lifecycle.events.OnResume;
 
-public class BatteryLightPreferenceController extends TogglePreferenceController
+public class ChargingLightPreferenceController extends TogglePreferenceController
         implements LifecycleObserver, OnResume, OnPause {
 
     private static final int ON = 1;
     private static final int OFF = 0;
     private SettingObserver mSettingObserver;
 
-    public BatteryLightPreferenceController(Context context, String key) {
+    public ChargingLightPreferenceController(Context context, String key) {
         super(context, key);
     }
 
