@@ -10,7 +10,10 @@
     <string name="torch_power_button_gesture_lp">Mantener pulsado el botón de encendido</string>
     <string name="proximity_wake_title">Prevenir encendido accidental</string>
     <string name="proximity_wake_summary">Comprobar el sensor de proximidad antes de encender la pantalla con el gesto Tocar para activar</string>
-    <string name="battery_light_title">Notificación luminosa</string>
-    <string name="charging_light_title">Notificación luminosa con el cargador conectado</string>
-    <string name="lowbattery_light_title">Notificación luminosa con batería baja</string>
+    <string name="battery_light_title">Notificación luminosa de batería</string>
+    <string name="charging_light_title">Mostrar con el cargador conectado</string>
+    <string name="lowbattery_light_title">Mostrar con batería baja</string>
+    <string name="lowbattery_light_intensity">Intensidad de la luz</string>
+    <string name="lowbattery_light_on_time">Tiempo ENCENDIDO del pulso led (ms)</string>
+    <string name="lowbattery_light_off_time">Tiempo APAGADO del pulso led (ms)</string>
 </resources>

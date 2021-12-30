@@ -17,18 +17,48 @@
 
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:settings="http://schemas.android.com/apk/res-auto"
     android:key="battery_light_screen"
     android:title="@string/battery_light_title">
 
     <SwitchPreference
         android:key="charging_light_enabled"
         android:title="@string/charging_light_title"
-        app:controller="com.android.settings.notification.ChargingLightPreferenceController" />
+        settings:controller="com.android.settings.notification.ChargingLightPreferenceController" />
 
     <SwitchPreference
         android:key="lowbattery_light_enabled"
         android:title="@string/lowbattery_light_title"
-        app:controller="com.android.settings.notification.LowBatteryLightPreferenceController" />
+        settings:controller="com.android.settings.notification.LowBatteryLightPreferenceController" />
+
+    <com.huexxx.support.preferences.CustomSeekBarPreference
+        android:key="battery_light_intensity"
+        android:dependency="lowbattery_light_enabled"
+        android:title="@string/lowbattery_light_intensity"
+        android:min="1"
+        android:max="4"
+        settings:units=""/>
+
+    <com.huexxx.support.preferences.CustomSeekBarPreference
+        android:key="battery_light_on_time"
+        android:dependency="lowbattery_light_enabled"
+        android:title="@string/lowbattery_light_on_time"
+        android:min="0"
+        android:max="10000"
+        settings:units=""/>
+
+    <com.huexxx.support.preferences.CustomSeekBarPreference
+        android:key="battery_light_off_time"
+        android:dependency="lowbattery_light_enabled"
+        android:title="@string/lowbattery_light_off_time"
+        android:min="0"
+        android:max="10000"
+        settings:units=""/>
+
+    <com.android.settingslib.widget.FooterPreference
+        android:key="battery_light_footer_preference"
+        android:selectable="true"
+        android:title="@*android:string/battery_light_description"
+        settings:searchable="false"/>
 
 </PreferenceScreen>
