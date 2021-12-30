@@ -16,7 +16,10 @@
     <string name="proximity_wake_summary">Check the proximity sensor prior to waking up screen from Double Tap 2 Wake gesture</string>
 
     <!-- Battery light -->
-    <string name="battery_light_title">Light notification</string>
-    <string name="charging_light_title">Light notification when connected to charger</string>
-    <string name="lowbattery_light_title">Light notification when battery is low</string>
+    <string name="battery_light_title">Battery light notification</string>
+    <string name="charging_light_title">Show when connected to charger</string>
+    <string name="lowbattery_light_title">Show when battery is low</string>
+    <string name="lowbattery_light_intensity">Light intensity</string>
+    <string name="lowbattery_light_on_time">Light ON time during led pulse (ms)</string>
+    <string name="lowbattery_light_off_time">Light OFF time during led pulse (ms)</string>
 </resources>
