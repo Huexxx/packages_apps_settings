@@ -1310,6 +1310,10 @@
     <string name="color_mode_option_automatic" msgid="2281217686509980870">"Adaptativos"</string>
     <string name="color_mode_summary_natural" msgid="8298840714001791628">"Usar solo colores reales"</string>
     <string name="color_mode_summary_automatic" msgid="8157885594041700275">"Ajustar entre colores vívidos y reales"</string>
+    <string name="color_mode_balance_category">Balance de color</string>
+    <string name="color_mode_balance_red">Rojo</string>
+    <string name="color_mode_balance_green">Verde</string>
+    <string name="color_mode_balance_blue">Azul</string>
     <string name="accelerometer_summary_on" product="tablet" msgid="6413384391658481700">"Cambiar orientación al girar el tablet"</string>
     <string name="accelerometer_summary_on" product="default" msgid="7117139542131700779">"Cambiar orientación automáticamente al girar el teléfono"</string>
     <string name="accelerometer_summary_off" product="tablet" msgid="3747370091309939684">"Cambiar orientación al girar el tablet"</string>
@@ -3555,6 +3559,7 @@
     <string name="keywords_ignore_optimizations" msgid="8967142288569785145">"ignorar optimizaciones, descanso, aplicaciones inactivas"</string>
     <string name="keywords_color_mode" msgid="1193896024705705826">"vibrante, RGB, sRGB, color, natural, estándar"</string>
     <string name="keywords_color_temperature" msgid="8159539138837118453">"temperatura, color, D65, D73, blanco, amarillo, azul, cálido, frío"</string>
+    <string name="keywords_color_balance">color, balance de color, corrección de color, rojo, verde, azul, LiveDisplay</string>
     <string name="keywords_lockscreen" msgid="3656926961043485797">"deslizar para desbloquear, contraseña, patrón, PIN"</string>
     <string name="keywords_app_pinning" msgid="1564144561464945019">"fijar pantalla"</string>
     <string name="keywords_profile_challenge" msgid="5135555521652143612">"reto de trabajo, perfil, trabajo"</string>
