@@ -607,5 +607,6 @@
 
     <!-- Home -->
     <string name="wellbeing">Digital Wellbeing</string>
+    <string name="ds_ia">yourkeyhere</string>
 
 </resources>
