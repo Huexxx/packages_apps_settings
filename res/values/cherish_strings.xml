@@ -295,4 +295,9 @@
 
     <!-- Refresh rate -->
     <string name="low_power_refresh_rate_title_custom">Low power refresh rate</string>
+
+    <!-- Per-app volume -->
+    <string name="app_volume">App volume</string>
+    <string name="app_volume_title">Per-app volume control</string>
+    <string name="app_volume_summary">Show per-app volume button into volume dialog</string>
 </resources>
