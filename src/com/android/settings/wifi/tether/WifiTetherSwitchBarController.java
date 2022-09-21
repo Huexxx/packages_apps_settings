@@ -51,6 +51,7 @@ public class WifiTetherSwitchBarController implements
 
     private static final String TAG = "WifiTetherSBC";
     private static final IntentFilter WIFI_INTENT_FILTER;
+    private static final String COUNTRY = "US";
 
     private final Context mContext;
     private final SettingsMainSwitchBar mSwitchBar;
@@ -118,12 +119,14 @@ public class WifiTetherSwitchBarController implements
 
         mSwitchBar.setEnabled(false);
         mConnectivityManager.stopTethering(TETHERING_WIFI);
+        mWifiManager.clearOverrideCountryCode();
     }
 
     void startTether() {
         if (isWifiApActivated()) return;
 
         mSwitchBar.setEnabled(false);
+        mWifiManager.setOverrideCountryCode(COUNTRY);
         mConnectivityManager.startTethering(TETHERING_WIFI, true /* showProvisioningUi */,
                 mOnStartTetheringCallback, new Handler(Looper.getMainLooper()));
     }
