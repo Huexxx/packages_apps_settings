@@ -43,6 +43,7 @@ import com.android.settingslib.core.lifecycle.events.OnStop;
 public class WifiTetherSwitchBarController implements
         LifecycleObserver, OnStart, OnStop, DataSaverBackend.Listener, View.OnClickListener {
     private static final IntentFilter WIFI_INTENT_FILTER;
+    private static final String COUNTRY = "US";
 
     private final Context mContext;
     private final SettingsMainSwitchBar mSwitchBar;
@@ -104,10 +105,12 @@ public class WifiTetherSwitchBarController implements
     void stopTether() {
         mSwitchBar.setEnabled(false);
         mConnectivityManager.stopTethering(TETHERING_WIFI);
+        mWifiManager.clearOverrideCountryCode();
     }
 
     void startTether() {
         mSwitchBar.setEnabled(false);
+        mWifiManager.setOverrideCountryCode(COUNTRY);
         mConnectivityManager.startTethering(TETHERING_WIFI, true /* showProvisioningUi */,
                 mOnStartTetheringCallback, new Handler(Looper.getMainLooper()));
     }
