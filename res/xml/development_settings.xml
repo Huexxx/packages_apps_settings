@@ -280,11 +280,6 @@
             android:title="@string/mobile_data_always_on"
             android:summary="@string/mobile_data_always_on_summary" />
 
-        <SwitchPreference
-            android:key="tethering_hardware_offload"
-            android:title="@string/tethering_hardware_offload"
-            android:summary="@string/tethering_hardware_offload_summary" />
-
         <ListPreference
             android:key="ingress_rate_limit"
             android:title="@string/ingress_rate_limit_title"
