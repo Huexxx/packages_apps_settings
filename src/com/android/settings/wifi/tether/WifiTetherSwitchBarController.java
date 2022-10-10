@@ -31,6 +31,8 @@ import android.net.ConnectivityManager;
 import android.net.wifi.WifiManager;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.UserHandle;
+import android.provider.Settings;
 import android.util.Log;
 import android.widget.Switch;
 
@@ -51,6 +53,7 @@ public class WifiTetherSwitchBarController implements
 
     private static final String TAG = "WifiTetherSBC";
     private static final IntentFilter WIFI_INTENT_FILTER;
+    private static final String COUNTRY = "US";
 
     private final Context mContext;
     private final SettingsMainSwitchBar mSwitchBar;
@@ -60,6 +63,8 @@ public class WifiTetherSwitchBarController implements
 
     @VisibleForTesting
     DataSaverBackend mDataSaverBackend;
+    @VisibleForTesting
+    boolean mIsSpoofEnabled;
     @VisibleForTesting
     final ConnectivityManager.OnStartTetheringCallback mOnStartTetheringCallback =
             new ConnectivityManager.OnStartTetheringCallback() {
@@ -119,12 +124,16 @@ public class WifiTetherSwitchBarController implements
 
         mSwitchBar.setEnabled(false);
         mConnectivityManager.stopTethering(TETHERING_WIFI);
+        if (mIsSpoofEnabled) mWifiManager.clearOverrideCountryCode();
     }
 
     void startTether() {
         if (isWifiApActivated()) return;
 
         mSwitchBar.setEnabled(false);
+        mIsSpoofEnabled = Settings.System.getIntForUser(mContext.getContentResolver(),
+            "softap_spoof_country_code", 0, UserHandle.USER_CURRENT) != 0;
+        if (mIsSpoofEnabled) mWifiManager.setOverrideCountryCode(COUNTRY);
         mConnectivityManager.startTethering(TETHERING_WIFI, true /* showProvisioningUi */,
                 mOnStartTetheringCallback, new Handler(Looper.getMainLooper()));
     }
