@@ -2,5 +2,6 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <string name="wifi_hotspot_ap_band_title">Banda del PA</string>
+    <string name="softap_spoof_country_code_title">Impostar código de país</string>
 
 </resources>
