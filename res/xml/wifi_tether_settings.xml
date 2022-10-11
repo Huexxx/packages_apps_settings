@@ -80,9 +80,9 @@
         android:title="@string/wifi_hotspot_client_manager_title"
         android:fragment="ink.kscope.settings.wifi.tether.WifiTetherClientManager" />
 
-    <com.cherish.settings.preferences.SystemSettingSwitchPreference
+    <com.cherish.settings.preferences.SystemSettingListPreference
         android:key="softap_spoof_country_code"
         android:title="@string/softap_spoof_country_code_title"
-        android:defaultValue="false"
-        settings:searchable="false" />
+        android:entries="@array/softap_spoof_country_code_entries"
+        android:entryValues="@array/softap_spoof_country_code_values" />
 </PreferenceScreen>

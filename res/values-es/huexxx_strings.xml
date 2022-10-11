@@ -3,5 +3,14 @@
 
     <string name="wifi_hotspot_ap_band_title">Banda del PA</string>
     <string name="softap_spoof_country_code_title">Impostar código de país</string>
+    <string name="spoof_disabled">Desactivado</string>
+    <string name="spoof_ww">(00) Mundial</string>
+    <string name="spoof_us">(US) Estados Unidos</string>
+    <string name="spoof_in">(IN) India</string>
+    <string name="spoof_sg">(SG) Singapur</string>
+    <string name="spoof_tw">(TW) Taiwan</string>
+    <string name="spoof_cn">(CN) China</string>
+    <string name="spoof_hk">(HK) Hong Kong</string>
+    <string name="spoof_kr">(KR) Republica de Korea</string>
 
 </resources>

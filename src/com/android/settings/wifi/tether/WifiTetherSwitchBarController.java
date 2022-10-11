@@ -18,6 +18,7 @@ package com.android.settings.wifi.tether;
 
 import static android.net.ConnectivityManager.TETHERING_WIFI;
 import static android.net.wifi.WifiManager.EXTRA_WIFI_AP_STATE;
+import static android.net.wifi.WifiManager.WIFI_AP_STATE_DISABLED;
 import static android.net.wifi.WifiManager.WIFI_AP_STATE_DISABLING;
 import static android.net.wifi.WifiManager.WIFI_AP_STATE_ENABLED;
 import static android.net.wifi.WifiManager.WIFI_AP_STATE_ENABLING;
@@ -53,7 +54,6 @@ public class WifiTetherSwitchBarController implements
 
     private static final String TAG = "WifiTetherSBC";
     private static final IntentFilter WIFI_INTENT_FILTER;
-    private static final String COUNTRY = "US";
 
     private final Context mContext;
     private final SettingsMainSwitchBar mSwitchBar;
@@ -63,7 +63,7 @@ public class WifiTetherSwitchBarController implements
     @VisibleForTesting
     DataSaverBackend mDataSaverBackend;
     @VisibleForTesting
-    boolean mIsSpoofEnabled;
+    int mSpoofCountry;
     @VisibleForTesting
     final ConnectivityManager.OnStartTetheringCallback mOnStartTetheringCallback =
             new ConnectivityManager.OnStartTetheringCallback() {
@@ -122,16 +122,41 @@ public class WifiTetherSwitchBarController implements
 
         mSwitchBar.setEnabled(false);
         mConnectivityManager.stopTethering(TETHERING_WIFI);
-        if (mIsSpoofEnabled) mWifiManager.clearOverrideCountryCode();
     }
 
     void startTether() {
         if (isWifiApActivated()) return;
 
         mSwitchBar.setEnabled(false);
-        mIsSpoofEnabled = Settings.System.getIntForUser(mContext.getContentResolver(),
-            "softap_spoof_country_code", 0, UserHandle.USER_CURRENT) != 0;
-        if (mIsSpoofEnabled) mWifiManager.setOverrideCountryCode(COUNTRY);
+        mSpoofCountry = Settings.System.getIntForUser(mContext.getContentResolver(),
+            "softap_spoof_country_code", 0, UserHandle.USER_CURRENT);
+        if (mSpoofCountry != 0) {
+            switch (mSpoofCountry) {
+                case 1:
+                    if (mWifiManager.getCountryCode() != "00") mWifiManager.setOverrideCountryCode("00");
+                    break;
+                case 2:
+                    if (mWifiManager.getCountryCode() != "US") mWifiManager.setOverrideCountryCode("US");
+                    break;
+                case 3:
+                    if (mWifiManager.getCountryCode() != "IN") mWifiManager.setOverrideCountryCode("IN");
+                    break;
+                case 4:
+                    if (mWifiManager.getCountryCode() != "SG") mWifiManager.setOverrideCountryCode("SG");
+                    break;
+                case 5:
+                    if (mWifiManager.getCountryCode() != "TW") mWifiManager.setOverrideCountryCode("TW");
+                    break;
+                case 6:
+                    if (mWifiManager.getCountryCode() != "CN") mWifiManager.setOverrideCountryCode("CN");
+                    break;
+                case 7:
+                    if (mWifiManager.getCountryCode() != "HK") mWifiManager.setOverrideCountryCode("HK");
+                    break;
+                case 8:
+                    if (mWifiManager.getCountryCode() != "KR") mWifiManager.setOverrideCountryCode("KR");
+            }
+        }
         mConnectivityManager.startTethering(TETHERING_WIFI, true /* showProvisioningUi */,
                 mOnStartTetheringCallback, new Handler(Looper.getMainLooper()));
     }
@@ -164,6 +189,8 @@ public class WifiTetherSwitchBarController implements
             mSwitchBar.setChecked(shouldBeChecked);
         }
         updateWifiSwitch();
+
+        if (!shouldBeChecked && mSpoofCountry != 0) mWifiManager.clearOverrideCountryCode();
     }
 
     private void updateWifiSwitch() {
