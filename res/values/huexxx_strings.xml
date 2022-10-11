@@ -2,5 +2,14 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <string name="softap_spoof_country_code_title">Spoof country code</string>
+    <string name="spoof_disabled">Disabled</string>
+    <string name="spoof_ww">(00) World Wide</string>
+    <string name="spoof_us">(US) United States</string>
+    <string name="spoof_in">(IN) India</string>
+    <string name="spoof_sg">(SG) Singapore</string>
+    <string name="spoof_tw">(TW) Taiwan</string>
+    <string name="spoof_cn">(CN) China</string>
+    <string name="spoof_hk">(HK) Hong Kong</string>
+    <string name="spoof_kr">(KR) Republic of Korea</string>
 
 </resources>

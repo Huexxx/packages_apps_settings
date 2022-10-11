@@ -73,11 +73,11 @@
         android:title="@string/wifi_hotspot_hidden_ssid_title"
         android:summary="@string/wifi_hotspot_hidden_ssid_summary"/>
 
-    <com.bliss.support.preferences.SystemSettingSwitchPreference
+    <com.bliss.support.preferences.SystemSettingListPreference
         android:key="softap_spoof_country_code"
         android:title="@string/softap_spoof_country_code_title"
-        android:defaultValue="false"
-        settings:searchable="false" />
+        android:entries="@array/softap_spoof_country_code_entries"
+        android:entryValues="@array/softap_spoof_country_code_values" />
 
     <Preference
         android:key="wifi_tether_client_manager"
