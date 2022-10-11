@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <string-array name="softap_spoof_country_code_entries" translatable="false">
+        <item>@string/spoof_disabled</item>
+        <item>@string/spoof_ww</item>
+        <item>@string/spoof_us</item>
+        <item>@string/spoof_in</item>
+        <item>@string/spoof_sg</item>
+        <item>@string/spoof_tw</item>
+        <item>@string/spoof_cn</item>
+        <item>@string/spoof_hk</item>
+        <item>@string/spoof_kr</item>
+    </string-array>
+
+    <string-array name="softap_spoof_country_code_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </string-array>
+
+</resources>
