@@ -502,4 +502,8 @@
     <!-- Game space -->
     <string name="game_space_title">Game space</string>
     <string name="game_space_summary">Enhance your gaming experience</string>
+
+    <!-- Ambient wake toggles -->
+    <string name="doze_gesture_ambient_title">Show Ambient</string>
+    <string name="doze_gesture_ambient_summary">Show Ambient Display instead of fully waking the screen up</string>
 </resources>
