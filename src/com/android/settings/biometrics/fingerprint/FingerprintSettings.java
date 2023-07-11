@@ -181,7 +181,6 @@ public class FingerprintSettings extends SubSettings {
                 mRequireScreenOnToAuthPreferenceController;
         private RestrictedSwitchPreference mRequireScreenOnToAuthPreference;
         private PreferenceCategory mFingerprintUnlockCategory;
-        private boolean mPerformantAuth;
 
         private FingerprintManager mFingerprintManager;
         private FingerprintUpdater mFingerprintUpdater;
@@ -248,7 +247,7 @@ public class FingerprintSettings extends SubSettings {
                     }
 
                     private void updateDialog() {
-                        if (!isUdfps() && mPerformantAuth) {
+                        if (!isUdfps()) {
                             setRequireScreenOnToAuthVisibility();
                         }
                         RenameDialog renameDialog = (RenameDialog) getFragmentManager().
@@ -348,8 +347,6 @@ public class FingerprintSettings extends SubSettings {
             mFingerprintManager = Utils.getFingerprintManagerOrNull(activity);
             mFingerprintUpdater = new FingerprintUpdater(activity, mFingerprintManager);
             mSensorProperties = mFingerprintManager.getSensorPropertiesInternal();
-            mPerformantAuth = getContext().getResources().getBoolean(
-                    com.android.internal.R.bool.config_performantAuthDefault);
 
             mToken = getIntent().getByteArrayExtra(
                     ChooseLockSettingsHelper.EXTRA_KEY_CHALLENGE_TOKEN);
@@ -519,7 +516,7 @@ public class FingerprintSettings extends SubSettings {
                         return true;
                     });
             mFingerprintUnlockCategory.setVisible(false);
-            if (!isUdfps() && mPerformantAuth) {
+            if (!isUdfps()) {
                 setRequireScreenOnToAuthVisibility();
             }
             setPreferenceScreen(root);
