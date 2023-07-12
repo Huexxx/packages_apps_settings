@@ -293,6 +293,9 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
             if (key.equals("top_level_accessibility")){
                 preference.setLayoutResource(R.layout.top_level_preference_top);
             }
+            if (key.equals("top_level_safety_center")){
+                preference.setLayoutResource(R.layout.top_level_preference_middle);
+            }
             if (key.equals("top_level_security")){
                 preference.setLayoutResource(R.layout.top_level_preference_middle);
             }
@@ -367,6 +370,9 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
             if (key.equals("top_level_accessibility")){
                 preference.setLayoutResource(R.layout.top_level_preference_top_oos12);
             }
+            if (key.equals("top_level_safety_center")){
+                preference.setLayoutResource(R.layout.top_level_preference_middle_oos12);
+            }
             if (key.equals("top_level_security")){
                 preference.setLayoutResource(R.layout.top_level_preference_middle_oos12);
             }
@@ -440,6 +446,9 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
             if (key.equals("top_level_accessibility")){
                 preference.setLayoutResource(R.layout.cherish_home_preference_card_top);
             }
+            if (key.equals("top_level_safety_center")){
+                preference.setLayoutResource(R.layout.cherish_home_preference_card_middle);
+            }
             if (key.equals("top_level_security")){
                 preference.setLayoutResource(R.layout.cherish_home_preference_card_middle);
             }
@@ -512,6 +521,9 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
             }
             if (key.equals("top_level_accessibility")){
                 preference.setLayoutResource(R.layout.cherish_home_preference_clean_top);
+            }
+            if (key.equals("top_level_safety_center")){
+                preference.setLayoutResource(R.layout.cherish_home_preference_clean_middle);
             }
             if (key.equals("top_level_security")){
                 preference.setLayoutResource(R.layout.cherish_home_preference_clean_middle);
