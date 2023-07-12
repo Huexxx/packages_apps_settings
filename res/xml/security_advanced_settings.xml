@@ -90,6 +90,12 @@
         android:fragment="com.android.settings.security.trustagent.TrustAgentSettings"
         settings:controller="com.android.settings.security.trustagent.ManageTrustAgentsPreferenceController" />
 
+    <!-- App lock -->
+    <com.android.settingslib.RestrictedPreference
+        android:order="75"
+        android:key="app_lock"
+        android:title="@string/app_lock_title" />
+
     <Preference
         android:order="80"
         android:key="screen_pinning_settings"
