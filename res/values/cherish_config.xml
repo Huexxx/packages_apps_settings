@@ -7,6 +7,9 @@
 	<!-- Device specific doze package -->
     <string name="config_customDozePackage" translatable="false"></string>
 
+    <!-- Whether device supports showing battery charge cycles -->
+    <bool name="config_showBatteryChargeCycles">true</bool>
+
     <!-- Fingerprint -->
     <bool name="config_is_front_facing_fps" translatable="false">false</bool>
 
