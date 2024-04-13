@@ -411,4 +411,15 @@
     <!-- Game space -->
     <string name="game_space_title">Không gian trò chơi</string>
     <string name="game_space_summary">Cải thiện trải nghiệm chơi game</string>
+    <!-- Ambient wake toggles -->
+    <string name="doze_gesture_ambient_title">Hiển thị màn hình xem nhanh</string>
+    <string name="doze_gesture_ambient_summary">Hiển thị màn hình xem nhanh thay vì đánh thức hoàn toàn màn hình</string>
+    <!-- Extra dim schedule -->
+    <string name="extra_dim_schedule_title">Lên lịch</string>
+    <string name="disabled">Đã tắt</string>
+    <string name="always_on_display_schedule_title">Luôn hiển thị theo lịch biểu</string>
+    <string name="always_on_display_schedule_sunset">Hoàng hôn</string>
+    <string name="always_on_display_schedule_sunrise">Bình minh</string>
+    <string name="always_on_display_schedule_mixed_sunset">Bật từ hoàng hôn đến bình minh</string>
+    <string name="always_on_display_schedule_mixed_sunrise">Bật từ một thời điểm cho đến khi mặt trời mọc</string>
 </resources>
