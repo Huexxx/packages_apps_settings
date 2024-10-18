@@ -257,9 +257,6 @@ public class HighlightableTopLevelPreferenceAdapter extends RoundCornerPreferenc
             ImageView iconImageView = v.findViewById(android.R.id.icon);
             if (iconImageView != null) {
                Drawable drawable = iconImageView.getDrawable();
-               if (drawable != null) {
-                   drawable.setTint(mIconColorHighlight);
-               }
             }
         }
     }
@@ -283,9 +280,6 @@ public class HighlightableTopLevelPreferenceAdapter extends RoundCornerPreferenc
             ImageView iconImageView = v.findViewById(android.R.id.icon);
             if (iconImageView != null) {
                 Drawable drawable = iconImageView.getDrawable();
-            if (drawable != null) {
-                drawable.setTint(mIconColorNormal);
-            }
           }
         }
     }
