@@ -78,11 +78,6 @@ public class DynamicDenylistManager {
             return;
         }
 
-        if (mNetworkPolicyManager == null) {
-            Log.w(TAG, "syncPolicyIfNeeded: invalid mNetworkPolicyManager");
-            return;
-        }
-
         final SharedPreferences.Editor editor = getManualDenylistPref().edit();
         final int[] existedUids = mNetworkPolicyManager
                 .getUidsWithPolicy(POLICY_REJECT_METERED_BACKGROUND);
@@ -96,11 +91,6 @@ public class DynamicDenylistManager {
 
     /** Set policy flags for specific UID. */
     public void setUidPolicyLocked(int uid, int policy) {
-        if (mNetworkPolicyManager == null) {
-            Log.w(TAG, "setUidPolicyLocked: invalid mNetworkPolicyManager");
-            return;
-        }
-
         Log.i(TAG, "setUidPolicyLocked: uid=" + uid + " policy=" + policy);
         synchronized (mLock) {
             mNetworkPolicyManager.setUidPolicy(uid, policy);
@@ -110,7 +100,7 @@ public class DynamicDenylistManager {
 
     /** Suggest a list of package to set as POLICY_REJECT. */
     public void setDenylist(Set<Integer> denylistTargetUids) {
-        if (denylistTargetUids == null || mNetworkPolicyManager == null) {
+        if (denylistTargetUids == null) {
             return;
         }
         final Set<Integer> manualDenylistUids = getDenylistAllUids(getManualDenylistPref());
@@ -174,12 +164,6 @@ public class DynamicDenylistManager {
             Log.w(TAG, "resetDenylistIfNeeded: invalid conditions");
             return;
         }
-
-        if (mNetworkPolicyManager == null) {
-            Log.w(TAG, "setUidPolicyLocked: invalid mNetworkPolicyManager");
-            return;
-        }
-
         synchronized (mLock) {
             final int[] uids = mNetworkPolicyManager
                     .getUidsWithPolicy(POLICY_REJECT_METERED_BACKGROUND);
