@@ -81,12 +81,14 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
     public static final String[] CHANGE_LAYOUT_KEYS = {
         "top_level_google",
         "dashboard_tile_pref_com.google.android.apps.wellbeing.settings.TopLevelSettingsActivity",
+        "dashboard_tile_pref_com.google.android.gms.backup.component.BackupOrRestoreSettingsActivity",
         "top_level_wellbeing",
     };
 
     public static final int[] LAYOUTS_N = {
         R.layout.bliss_card_google,
         R.layout.bliss_card_wellbeing,
+        R.layout.bliss_card_backup,
         R.layout.bliss_card_wellbeing
     };
 
